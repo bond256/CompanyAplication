@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class NetworkClient {
     fun getClient(): Api{
         return Retrofit.Builder()
-            .baseUrl("https://mocki.io/v1")
+            .baseUrl("https://mocki.io/v1/")
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()

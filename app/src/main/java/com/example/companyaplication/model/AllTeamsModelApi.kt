@@ -13,7 +13,20 @@ data class AllTeamsModelApi(
     @SerializedName("programName")
     val programName: String,
     @SerializedName("results")
-    val results: List<Result>,
+    val results: List<AllTeamData>,
     @SerializedName("userTeamResult")
     val userTeamResult: UserTeamResult
+)
+
+data class AllTeamData(
+    @SerializedName("average")
+    val average: Int,
+    @SerializedName("average_double")
+    val averageDouble: Int,
+    @SerializedName("displayName")
+    val displayName: String,
+    @SerializedName("rank")
+    val rank: Int,
+    @SerializedName("teamId")
+    val teamId: String
 )

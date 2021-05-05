@@ -1,13 +1,9 @@
 package com.example.companyaplication.ui
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.example.companyaplication.R
 import com.example.companyaplication.base.BaseFragment
+import com.example.companyaplication.viewmodel.MyTeamViewModel
 
 class MyTeamFragment : BaseFragment() {
 
