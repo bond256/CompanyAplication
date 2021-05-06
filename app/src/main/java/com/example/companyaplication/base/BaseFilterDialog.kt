@@ -17,4 +17,8 @@ abstract class BaseFilterDialog: DialogFragment() {
         return inflater.inflate(layoutId,container,false)
     }
 
+    fun onBackPressed(){
+        activity?.onBackPressed()
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.example.companyaplication.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -8,15 +9,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.companyaplication.R
 import com.example.companyaplication.State
-import com.example.companyaplication.adapters.AllTeamsAdapter
 import com.example.companyaplication.adapters.MyCompanyAdapter
 import com.example.companyaplication.base.BaseFragment
+import com.example.companyaplication.common.FilterButtonsView
+import com.example.companyaplication.common.FilterType
 import com.example.companyaplication.filterdialog.ActivityDialogFragment
-import com.example.companyaplication.model.AllTeamData
 import com.example.companyaplication.model.MyCompanyData
 import com.example.companyaplication.viewmodel.MyCompanyViewModel
-import kotlinx.android.synthetic.main.all_team_fragment.*
+import kotlinx.android.synthetic.main.filter_buttons_view.*
 import kotlinx.android.synthetic.main.my_company_fragment.*
+import kotlin.math.log
+
 
 class MyCompanyFragment : BaseFragment(),ActivityDialogFragment.ActivityFilterDialogListener {
 
@@ -45,7 +48,19 @@ class MyCompanyFragment : BaseFragment(),ActivityDialogFragment.ActivityFilterDi
                 State.LOADING -> showPlaceHolder()
             }
         })
-        activity_filter_button.setOnClickListener { ActivityDialogFragment.showFilters(childFragmentManager,this) }
+
+        val t=object: FilterButtonsView.FilterSelectListener{
+            override fun onActivityClick() {
+                Log.d("tag", "onActivityClick: ")
+                ActivityDialogFragment.showFilters(childFragmentManager,this@MyCompanyFragment)
+            }
+
+            override fun onTimeClick() {
+                Log.d("tag", "onTimeClick: ")
+            }
+
+        }
+        filterButtonsView.setFilterSelectListener(t)
     }
 
 
@@ -65,8 +80,13 @@ class MyCompanyFragment : BaseFragment(),ActivityDialogFragment.ActivityFilterDi
         progressBar2.visibility = View.GONE
     }
 
-    override fun onSave() {
-        TODO("Not yet implemented")
+    override fun onSave(filterType: FilterType?) {
+        Log.d("tag", "onSave: ${filterType?.name}")
+        if(filterType==FilterType.STEPS){
+            filterButtonsView.setImageActivity(R.drawable.ic_baseline_directions_walk_24)
+        }else{
+            filterButtonsView.setImageActivity(R.drawable.ic_baseline_location_on_24)
+        }
     }
 
     override fun onBack() {
