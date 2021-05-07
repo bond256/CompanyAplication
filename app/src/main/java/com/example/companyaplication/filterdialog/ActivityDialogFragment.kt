@@ -23,12 +23,12 @@ class ActivityDialogFragment : BaseFilterDialog() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        step_button.setOnClickListener { type=FilterType.STEPS }
-        km_button.setOnClickListener { type=FilterType.KM }
-        button3.setOnClickListener {
-            listener?.onSave(type)
-            onBackPressed()
-            }
+        //step_button.setOnClickListener { type=FilterType.STEPS }
+        //km_button.setOnClickListener { type=FilterType.KM }
+//        button3.setOnClickListener {
+//            listener?.onSave(type)
+//            onBackPressed()
+//            }
 
     }
 
