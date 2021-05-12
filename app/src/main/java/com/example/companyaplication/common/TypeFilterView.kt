@@ -20,8 +20,14 @@ class TypeFilterView @JvmOverloads constructor(
     private fun initializeLayout(context: Context,attrs: AttributeSet?,defStyleAttr: Int){
         val inflater=context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         inflater.inflate(R.layout.type_filter_view,this,true)
-
         type_btn?.setOnClickListener { Log.d("tag", "initializeLayout: ") }
+    }
 
+    fun setText(text:String){
+        name_type_btn.text=text
+    }
+
+    fun setIcon(id:Int){
+        type_btn.setBackgroundResource(id)
     }
 }

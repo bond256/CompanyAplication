@@ -16,6 +16,9 @@ import com.example.companyaplication.common.FilterType
 import com.example.companyaplication.filterdialog.ActivityDialogFragment
 import com.example.companyaplication.model.MyCompanyData
 import com.example.companyaplication.viewmodel.MyCompanyViewModel
+import com.google.firebase.crashlytics.CrashlyticsRegistrar
+import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.google.firebase.crashlytics.internal.model.CrashlyticsReport
 import kotlinx.android.synthetic.main.filter_buttons_view.*
 import kotlinx.android.synthetic.main.my_company_fragment.*
 import kotlin.math.log
@@ -57,6 +60,8 @@ class MyCompanyFragment : BaseFragment(),ActivityDialogFragment.ActivityFilterDi
 
             override fun onTimeClick() {
                 Log.d("tag", "onTimeClick: ")
+                FirebaseCrashlytics.getInstance().log("my error")
+                throw Exception("my")
             }
 
         }
